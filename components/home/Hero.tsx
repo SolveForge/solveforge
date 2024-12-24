@@ -6,7 +6,6 @@ import Image from 'next/image';
 import AnimatedShinyText from "@/components/ui/animated-shiny-text"
 import { BorderBeam } from "@/components/ui/border-beam"
 import { AnimatedEmoji } from "@/components/ui/animated-emoji"
-import { ScrollIndicator } from "@/components/ui/scroll-indicator"
 
 export default function Hero() {
   return (
