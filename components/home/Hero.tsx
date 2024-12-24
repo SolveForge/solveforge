@@ -5,6 +5,8 @@ import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import AnimatedShinyText from "@/components/ui/animated-shiny-text"
 import { BorderBeam } from "@/components/ui/border-beam"
+import { AnimatedEmoji } from "@/components/ui/animated-emoji"
+import { ScrollIndicator } from "@/components/ui/scroll-indicator"
 
 export default function Hero() {
   return (
@@ -18,13 +20,20 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
           <div className="text-left space-y-6 lg:space-y-10">
-            {/* Overline text with adjusted padding for mobile */}
-            <div className="inline-flex items-center px-3 sm:px-5 py-1.5 rounded-full bg-gray-100 text-gray-700 text-sm font-medium
-              border border-gray-200/30 shadow-sm">
-              <AnimatedShinyText className="text-gray-700">
-                <span className="inline-block animate-float-emoji">⚡</span>
-                <span className="ml-2 text-xs sm:text-sm">AI-Powered Fitness Revolution</span>
-              </AnimatedShinyText>
+            {/* Overline text with AnimatedShinyText */}
+            <div className="relative inline-flex items-center px-3 sm:px-5 py-1.5 rounded-full 
+              bg-gray-100/80 text-gray-700 text-sm font-medium border border-gray-200/30 shadow-sm">
+              
+              {/* Content wrapper */}
+              <div className="relative z-10 flex items-center gap-2">
+                <AnimatedEmoji emoji="⚡" animationType="pulse" className="text-sm" />
+                <AnimatedShinyText 
+                  className="text-xs sm:text-sm font-medium text-gray-800"
+                  shimmerWidth={200}
+                >
+                  AI-Powered Fitness Revolution
+                </AnimatedShinyText>
+              </div>
             </div>
 
             {/* Main heading with adjusted font sizes for mobile */}
@@ -246,22 +255,32 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Floating Cards with independent animations - hidden on mobile */}
+            {/* Goal Tracking Card */}
             <div className="absolute -left-16 top-32 hidden lg:block">
               <div className="animate-float-card-1">
                 <div className="group relative transition-all duration-300 hover:scale-105">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-pink-600/30 via-purple-600/30 to-blue-600/30 
-                    rounded-lg blur-md opacity-75 group-hover:opacity-100 group-hover:blur-lg transition duration-500">
+                  <div className="absolute -inset-1.5 bg-gradient-to-r from-pink-600/20 via-purple-600/20 to-blue-600/20 
+                    rounded-lg blur-lg opacity-50 group-hover:opacity-75 group-hover:blur-xl transition-all duration-500">
                   </div>
-                  <div className="relative bg-white/50 hover:bg-white/60 backdrop-blur-xl rounded-lg p-3 shadow-lg 
+                  <div className="relative bg-white/50 hover:bg-white/80 backdrop-blur-xl rounded-lg p-3.5 shadow-lg 
                     border border-white/20 transition-all duration-300">
-                    <div className="flex items-center gap-3">
-                      <div className="h-8 w-8 rounded-full bg-blue-500/10 flex items-center justify-center">
-                        <span className="text-blue-600 text-sm">🎯</span>
+                    <div className="flex items-center gap-3.5">
+                      <div className="relative h-9 w-9 rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-500/10 
+                        flex items-center justify-center shadow-inner transform group-hover:scale-110 
+                        group-hover:rotate-3 transition-all duration-300 overflow-hidden">
+                        <AnimatedEmoji emoji="🎯" animationType="pulse" className="text-base" />
                       </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">Goal Tracking</p>
-                        <p className="text-xs text-gray-500">Real-time progress</p>
+                      <div className="transform group-hover:translate-x-1 transition-all duration-300">
+                        <div className="flex items-center gap-1.5">
+                          <p className="text-sm font-semibold text-gray-900/80 group-hover:text-gray-900 
+                            transition-colors duration-300">Smart Goals</p>
+                          <div className="h-4 w-4 rounded-full bg-green-100 flex items-center justify-center
+                            opacity-0 group-hover:opacity-100 transition-all duration-300 scale-50 group-hover:scale-100">
+                            <span className="text-[10px]">✓</span>
+                          </div>
+                        </div>
+                        <p className="text-xs font-medium text-gray-600/75 group-hover:text-gray-600 
+                          transition-colors duration-300">AI-driven milestones</p>
                       </div>
                     </div>
                   </div>
@@ -269,21 +288,32 @@ export default function Hero() {
               </div>
             </div>
 
+            {/* Workout Card */}
             <div className="absolute -right-16 bottom-32 hidden lg:block">
               <div className="animate-float-card-2">
                 <div className="group relative transition-all duration-300 hover:scale-105">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-blue-600/30 via-cyan-600/30 to-teal-600/30 
-                    rounded-lg blur-md opacity-75 group-hover:opacity-100 group-hover:blur-lg transition duration-500">
+                  <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-600/20 via-blue-600/20 to-indigo-600/20 
+                    rounded-lg blur-lg opacity-50 group-hover:opacity-75 group-hover:blur-xl transition-all duration-500">
                   </div>
-                  <div className="relative bg-white/50 hover:bg-white/60 backdrop-blur-xl rounded-lg p-3 shadow-lg 
+                  <div className="relative bg-white/50 hover:bg-white/80 backdrop-blur-xl rounded-lg p-3.5 shadow-lg 
                     border border-white/20 transition-all duration-300">
-                    <div className="flex items-center gap-3">
-                      <div className="h-8 w-8 rounded-full bg-green-500/10 flex items-center justify-center">
-                        <span className="text-green-600 text-sm">💪</span>
+                    <div className="flex items-center gap-3.5">
+                      <div className="relative h-9 w-9 rounded-lg bg-gradient-to-br from-green-500/10 to-emerald-500/10 
+                        flex items-center justify-center shadow-inner transform group-hover:scale-110 
+                        group-hover:rotate-3 transition-all duration-300 overflow-hidden">
+                        <AnimatedEmoji emoji="⚡" animationType="bounce" className="text-base" />
                       </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">AI Workouts</p>
-                        <p className="text-xs text-gray-500">Personalized for you</p>
+                      <div className="transform group-hover:translate-x-1 transition-all duration-300">
+                        <div className="flex items-center gap-1.5">
+                          <p className="text-sm font-semibold text-gray-900/80 group-hover:text-gray-900 
+                            transition-colors duration-300">Dynamic Training</p>
+                          <div className="h-4 w-4 rounded-full bg-blue-100 flex items-center justify-center
+                            opacity-0 group-hover:opacity-100 transition-all duration-300 scale-50 group-hover:scale-100">
+                            <span className="text-[10px]">↻</span>
+                          </div>
+                        </div>
+                        <p className="text-xs font-medium text-gray-600/75 group-hover:text-gray-600 
+                          transition-colors duration-300">Adapts to your progress</p>
                       </div>
                     </div>
                   </div>
@@ -291,21 +321,32 @@ export default function Hero() {
               </div>
             </div>
 
+            {/* Analytics Card */}
             <div className="absolute -left-8 bottom-48 hidden lg:block">
               <div className="animate-float-card-3">
                 <div className="group relative transition-all duration-300 hover:scale-105">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600/30 via-yellow-600/30 to-orange-600/30 
-                    rounded-lg blur-md opacity-75 group-hover:opacity-100 group-hover:blur-lg transition duration-500">
+                  <div className="absolute -inset-1.5 bg-gradient-to-r from-amber-600/20 via-orange-600/20 to-red-600/20 
+                    rounded-lg blur-lg opacity-50 group-hover:opacity-75 group-hover:blur-xl transition-all duration-500">
                   </div>
-                  <div className="relative bg-white/50 hover:bg-white/60 backdrop-blur-xl rounded-lg p-3 shadow-lg 
+                  <div className="relative bg-white/50 hover:bg-white/80 backdrop-blur-xl rounded-lg p-3.5 shadow-lg 
                     border border-white/20 transition-all duration-300">
-                    <div className="flex items-center gap-3">
-                      <div className="h-8 w-8 rounded-full bg-purple-500/10 flex items-center justify-center">
-                        <span className="text-purple-600 text-sm">📊</span>
+                    <div className="flex items-center gap-3.5">
+                      <div className="relative h-9 w-9 rounded-lg bg-gradient-to-br from-purple-500/10 to-pink-500/10 
+                        flex items-center justify-center shadow-inner transform group-hover:scale-110 
+                        group-hover:rotate-3 transition-all duration-300 overflow-hidden">
+                        <AnimatedEmoji emoji="📈" animationType="spin" className="text-base" />
                       </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900">Analytics</p>
-                        <p className="text-xs text-gray-500">Track progress</p>
+                      <div className="transform group-hover:translate-x-1 transition-all duration-300">
+                        <div className="flex items-center gap-1.5">
+                          <p className="text-sm font-semibold text-gray-900/80 group-hover:text-gray-900 
+                            transition-colors duration-300">Live Insights</p>
+                          <div className="h-4 w-4 rounded-full bg-purple-100 flex items-center justify-center
+                            opacity-0 group-hover:opacity-100 transition-all duration-300 scale-50 group-hover:scale-100">
+                            <span className="text-[10px]">⚡</span>
+                          </div>
+                        </div>
+                        <p className="text-xs font-medium text-gray-600/75 group-hover:text-gray-600 
+                          transition-colors duration-300">Real-time analytics</p>
                       </div>
                     </div>
                   </div>
