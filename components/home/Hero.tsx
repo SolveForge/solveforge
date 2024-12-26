@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import AnimatedShinyText from "@/components/ui/animated-shiny-text"
+import { AnimatedShinyText } from '@/components/ui/animated-shiny-text'
 import { BorderBeam } from "@/components/ui/border-beam"
 import { AnimatedEmoji } from "@/components/ui/animated-emoji"
 

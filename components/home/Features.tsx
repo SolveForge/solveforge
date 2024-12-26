@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Target, Clock, Dumbbell, Sparkles as SparklesIcon, ArrowRight } from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { motion } from "framer-motion"
+import { AnimatedShinyText } from "@/components/ui/animated-shiny-text"
 
 export default function Features() {
   useScrollAnimation()
@@ -57,50 +58,48 @@ export default function Features() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_50%_100px,rgba(0,0,0,0.02),transparent)]" />
       
       <div className="container relative mx-auto max-w-7xl">
-        {/* Enhanced header section */}
+        {/* Enhanced badge and title section */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-20 animate-on-scroll">
           <div className="lg:max-w-2xl mb-10 lg:mb-0">
-            {/* Enhanced badge design */}
-            <div className="inline-flex items-center mb-8 relative">
-              <div className="relative">
-                <div className="absolute -inset-3 bg-gradient-to-r from-gray-900/10 to-gray-800/10 
-                  rounded-full blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <div className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full 
-                  bg-gradient-to-r from-gray-100 to-gray-50 border border-gray-200/60 shadow-sm">
-                  <span className="flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                  </span>
-                  <span className="text-sm font-medium text-gray-800">
-                    Why Choose SolveForge?
-                  </span>
-                </div>
+            {/* Badge design - With emoji */}
+            <div className="relative inline-flex items-center px-3 sm:px-5 py-1.5 rounded-full 
+              bg-gray-100/80 text-gray-700 text-sm font-medium border border-gray-200/30 shadow-sm mb-8">
+              
+              {/* Content wrapper */}
+              <div className="relative z-10 flex items-center gap-2">
+                {/* Emoji with subtle animation */}
+                <span className="animate-subtle-float">✨</span>
+
+                {/* Text */}
+                <span className="text-xs sm:text-sm font-medium bg-gradient-to-r from-gray-800 via-gray-600 to-gray-800 
+                  bg-clip-text text-transparent">
+                  Discover Excellence
+                </span>
               </div>
             </div>
 
-            {/* Enhanced title design */}
-            <div className="relative">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-                <span className="text-gray-900">
-                  Engineered for
-                </span>
-                <br />
-                <span className="inline-flex items-center">
-                  <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-                    Excellence
-                  </span>
-                  <span className="ml-4 inline-block w-3 h-3 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 
-                    animate-pulse" />
+            {/* Title - Matching Hero style exactly */}
+            <div className="space-y-4 sm:space-y-6">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight lg:leading-tight
+                text-gray-900 tracking-tight">
+                Engineered for <br className="hidden sm:block" />
+                <span className="bg-gradient-to-b from-gray-800 via-gray-700 to-gray-600 bg-clip-text text-transparent">
+                  Excellence
                 </span>
               </h2>
+              
+              <p className="text-gray-600 text-lg sm:text-xl leading-relaxed max-w-xl">
+                Discover how our cutting-edge AI technology transforms complex challenges into elegant solutions, 
+                tailored specifically to your needs and goals.
+              </p>
             </div>
           </div>
 
-          {/* Fixed description alignment */}
+          {/* Right side description */}
           <div className="lg:max-w-xl lg:pt-16">
             <p className="text-gray-600 text-lg leading-relaxed text-left lg:text-right">
-              Discover how our cutting-edge AI technology transforms complex challenges into elegant solutions, 
-              tailored specifically to your needs and goals.
+              Our AI-powered platform delivers personalized fitness solutions that adapt and grow with you, 
+              ensuring optimal results at every step of your journey.
             </p>
           </div>
         </div>

@@ -18,10 +18,28 @@ module.exports = {
     },
     extend: {
       keyframes: {
-        shine: {
-          "0%": { left: "-100%" },
-          "100%": { left: "200%" },
+        "subtle-shake": {
+          '0%, 100%': { transform: 'rotate(-1deg)' },
+          '50%': { transform: 'rotate(1deg)' },
         },
+        "subtle-float": {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-2px)' },
+        },
+        shimmer: {
+          '100%': { transform: 'translateX(100%)' }
+        },
+        flow: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' }
+        }
+      },
+      animation: {
+        'subtle-shake': 'subtle-shake 0.3s ease-in-out infinite',
+        'subtle-float': 'subtle-float 2s ease-in-out infinite',
+        'spin-slow': 'spin 3s linear infinite',
+        'pulse-slow': 'pulse 3s linear infinite',
+        'flow-down': 'flow 3s linear infinite',
       },
       colors: {
         border: "hsl(var(--border))",

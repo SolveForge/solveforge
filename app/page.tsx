@@ -1,7 +1,7 @@
 import Header from '@/components/Header'
 import Hero from '@/components/home/Hero'
 import Features from '@/components/home/Features'
-import AISynergy from '@/components/home/AISynergy'
+import MacroPath from '@/components/home/MacroPath'
 import HowItWorks from '@/components/home/HowItWorks'
 import ScienceBehindAI from '@/components/home/ScienceBehindAI'
 import Newsletter from '@/components/home/Newsletter'
@@ -16,7 +16,7 @@ export default function Home() {
         <Hero />
         <div className="mt-[4rem] lg:mt-0">
           <Features />
-          <AISynergy />
+          <MacroPath />
           <HowItWorks />
           <ScienceBehindAI />
           <Newsletter />
