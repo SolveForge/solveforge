@@ -7,6 +7,7 @@ import ScienceBehindAI from '@/components/home/ScienceBehindAI'
 import Newsletter from '@/components/home/Newsletter'
 import CTA from '@/components/home/CTA'
 import Footer from '@/components/Footer'
+import MartialArts from "@/components/home/MartialArts"
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
           <MacroPath />
           <HowItWorks />
           <ScienceBehindAI />
+          <MartialArts />
           <Newsletter />
           <CTA />
         </div>

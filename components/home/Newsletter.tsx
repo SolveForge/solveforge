@@ -77,7 +77,7 @@ export default function Newsletter() {
             {/* Right side - Loading Cards */}
             <div className="relative mt-12">
               {/* Background shadow for all cards */}
-              <div className="absolute -inset-4 rounded-2xl bg-gray-900/20 blur-3xl -z-10" />
+              <div className="absolute -inset-4 rounded-2xl bg-gray-900/15 blur-3xl -z-10" />
               
               <div className="space-y-3">
                 {[
@@ -86,7 +86,7 @@ export default function Newsletter() {
                   { bgColor: 'bg-rose-50/30' }
                 ].map((card, index) => (
                   <motion.div 
-                    key={index}
+                    key={index} 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}

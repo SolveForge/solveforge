@@ -4,24 +4,34 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { AnimatedShinyText } from '@/components/ui/animated-shiny-text'
-import { BorderBeam } from "@/components/ui/border-beam"
 import { AnimatedEmoji } from "@/components/ui/animated-emoji"
+import { motion } from 'framer-motion';
+import { useScroll, useTransform } from 'framer-motion'
+import Iphone15Pro from "@/components/ui/iphone-15-pro"
+import { Activity, Calendar, Dumbbell, LineChart } from 'lucide-react'
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[calc(100vh+16rem)] lg:min-h-[calc(100vh-5rem)] flex items-start lg:items-center 
-      overflow-hidden py-8 sm:py-12 lg:py-16 mb-[12rem] lg:mb-0">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white pointer-events-none" />
-      
-      {/* Main content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <section className="relative pt-32 pb-20 lg:pt-36 lg:pb-32">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Left Column - Text Content */}
-          <div className="text-left space-y-6 lg:space-y-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-left space-y-6 lg:space-y-10"
+          >
             {/* Overline text with AnimatedShinyText */}
-            <div className="relative inline-flex items-center px-3 sm:px-5 py-1.5 rounded-full 
-              bg-gray-100/80 text-gray-700 text-sm font-medium border border-gray-200/30 shadow-sm">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="relative inline-flex items-center px-3 sm:px-5 py-1.5 rounded-full 
+                bg-gray-100/80 text-gray-700 text-sm font-medium border border-gray-200/30 shadow-sm"
+            >
               
               {/* Content wrapper */}
               <div className="relative z-10 flex items-center gap-2">
@@ -33,10 +43,15 @@ export default function Hero() {
                   AI-Powered Fitness Revolution
                 </AnimatedShinyText>
               </div>
-            </div>
+            </motion.div>
 
             {/* Main heading with adjusted font sizes for mobile */}
-            <div className="space-y-6 lg:space-y-10">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="space-y-6 lg:space-y-10"
+            >
               <div className="space-y-4 sm:space-y-6">
                 <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight lg:leading-tight
                   text-gray-900 tracking-tight"
@@ -53,7 +68,12 @@ export default function Hero() {
               </div>
               
               {/* Enhanced CTA Section */}
-              <div className="space-y-4 sm:space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="space-y-4 sm:space-y-6"
+              >
                 <div className="flex flex-col sm:flex-row gap-4 items-center">
                   <Button 
                     size="lg"
@@ -91,11 +111,16 @@ export default function Hero() {
                 <p className="text-sm text-gray-500 flex items-center gap-2">
                   🔒 No credit card required • Cancel anytime
                 </p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             {/* Feature Cards Section with refined rainbow glow */}
-            <div className="pt-6 sm:pt-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="pt-6 sm:pt-8"
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Left column - Stacked cards */}
                 <div className="space-y-3">
@@ -210,148 +235,191 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          {/* Right Column - Adjust mobile height and spacing */}
-          <div className="relative h-[700px] w-full lg:w-[500px] ml-auto mt-8 lg:mt-0">
-            {/* Floating effect wrapper */}
-            <div className="animate-float group h-full">
-              {/* Enhanced rainbow glow effect for image */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/80 via-pink-600/80 to-blue-600/80 
-                rounded-2xl blur-lg opacity-80 group-hover:opacity-90 transition duration-1000 
-                group-hover:duration-200 scale-[0.9] group-hover:blur-2xl">
-              </div>
-              
-              <div className="relative h-full w-full overflow-hidden">
-                {/* Background and gradient effects */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-gray-100 to-gray-50 rounded-2xl scale-[0.9]" />
-                
-                {/* Image */}
-                <Image
-                  src="/image/1.jpeg"
-                  alt="Fitness Journey"
-                  fill
-                  className="object-cover rounded-2xl brightness-90 scale-[0.9] transition-all duration-500"
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 500px"
-                  style={{ objectPosition: "center 20%" }}
-                />
-
-                {/* Darker overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-tr from-gray-900/60 to-gray-900/50 rounded-2xl scale-[0.9]
-                  transition-all duration-500" />
-
-                {/* Shine effect */}
-                <div className="absolute inset-0 h-full w-1/2 z-5 block transform -skew-x-12 
-                  bg-gradient-to-r from-transparent via-white to-transparent opacity-10 
-                  group-hover:animate-[shine_4s_ease-in-out_infinite] scale-[0.9]" 
-                />
-
-                {/* Enhanced border */}
-                <div className="absolute inset-0 rounded-2xl ring-2 ring-white/20 scale-[0.9]
-                  group-hover:ring-white/30 transition-all duration-500" />
-              </div>
-            </div>
-
-            {/* Goal Tracking Card */}
-            <div className="absolute -left-16 top-32 hidden lg:block">
-              <div className="animate-float-card-1">
-                <div className="group relative transition-all duration-300 hover:scale-105">
-                  <div className="absolute -inset-1.5 bg-gradient-to-r from-pink-600/20 via-purple-600/20 to-blue-600/20 
-                    rounded-lg blur-lg opacity-50 group-hover:opacity-75 group-hover:blur-xl transition-all duration-500">
+          {/* Right Column - iPhone and Floating Widgets */}
+          <div className="relative h-[800px] w-full lg:w-[500px] ml-auto">
+            {/* Workout Timer Widget - Top Left */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute -left-40 top-32 z-10"
+            >
+              <motion.div 
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-2xl p-5 
+                  shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-700/30 
+                  hover:shadow-lg hover:border-gray-600/30 hover:-translate-y-0.5 transition-all duration-300 w-[170px]"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-gray-400 text-[13px] font-medium">Workout Time</p>
+                    <div className="h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
                   </div>
-                  <div className="relative bg-white/50 hover:bg-white/80 backdrop-blur-xl rounded-lg p-3.5 shadow-lg 
-                    border border-white/20 transition-all duration-300">
-                    <div className="flex items-center gap-3.5">
-                      <div className="relative h-9 w-9 rounded-lg bg-gradient-to-br from-blue-500/10 to-purple-500/10 
-                        flex items-center justify-center shadow-inner transform group-hover:scale-110 
-                        group-hover:rotate-3 transition-all duration-300 overflow-hidden">
-                        <AnimatedEmoji emoji="🎯" animationType="pulse" className="text-base" />
-                      </div>
-                      <div className="transform group-hover:translate-x-1 transition-all duration-300">
-                        <div className="flex items-center gap-1.5">
-                          <p className="text-sm font-semibold text-gray-900/80 group-hover:text-gray-900 
-                            transition-colors duration-300">Smart Goals</p>
-                          <div className="h-4 w-4 rounded-full bg-green-100 flex items-center justify-center
-                            opacity-0 group-hover:opacity-100 transition-all duration-300 scale-50 group-hover:scale-100">
-                            <span className="text-[10px]">✓</span>
-                          </div>
-                        </div>
-                        <p className="text-xs font-medium text-gray-600/75 group-hover:text-gray-600 
-                          transition-colors duration-300">AI-driven milestones</p>
-                      </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-[52px] h-[52px]">
+                      <CircularProgressbar
+                        value={70}
+                        text={`32`}
+                        strokeWidth={6}
+                        styles={buildStyles({
+                          textSize: '24px',
+                          pathColor: '#60A5FA',
+                          textColor: '#F3F4F6',
+                          trailColor: '#374151',
+                        })}
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-gray-200 font-medium text-sm">min left</p>
+                      <p className="text-xs text-gray-400">of 45 min</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            {/* Workout Card */}
-            <div className="absolute -right-16 bottom-32 hidden lg:block">
-              <div className="animate-float-card-2">
-                <div className="group relative transition-all duration-300 hover:scale-105">
-                  <div className="absolute -inset-1.5 bg-gradient-to-r from-cyan-600/20 via-blue-600/20 to-indigo-600/20 
-                    rounded-lg blur-lg opacity-50 group-hover:opacity-75 group-hover:blur-xl transition-all duration-500">
+            {/* Calories Widget - Top Right */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute -right-12 top-52 z-20"
+            >
+              <motion.div 
+                animate={{ y: [-15, 15, -15] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-2xl p-5 
+                  shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-700/30 
+                  hover:shadow-lg hover:border-gray-600/30 hover:-translate-y-0.5 transition-all duration-300 w-[170px]"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <p className="text-gray-400 text-[13px] font-medium">Calories</p>
+                    <span className="text-orange-400">🔥</span>
                   </div>
-                  <div className="relative bg-white/50 hover:bg-white/80 backdrop-blur-xl rounded-lg p-3.5 shadow-lg 
-                    border border-white/20 transition-all duration-300">
-                    <div className="flex items-center gap-3.5">
-                      <div className="relative h-9 w-9 rounded-lg bg-gradient-to-br from-green-500/10 to-emerald-500/10 
-                        flex items-center justify-center shadow-inner transform group-hover:scale-110 
-                        group-hover:rotate-3 transition-all duration-300 overflow-hidden">
-                        <AnimatedEmoji emoji="⚡" animationType="bounce" className="text-base" />
-                      </div>
-                      <div className="transform group-hover:translate-x-1 transition-all duration-300">
-                        <div className="flex items-center gap-1.5">
-                          <p className="text-sm font-semibold text-gray-900/80 group-hover:text-gray-900 
-                            transition-colors duration-300">Dynamic Training</p>
-                          <div className="h-4 w-4 rounded-full bg-blue-100 flex items-center justify-center
-                            opacity-0 group-hover:opacity-100 transition-all duration-300 scale-50 group-hover:scale-100">
-                            <span className="text-[10px]">↻</span>
-                          </div>
-                        </div>
-                        <p className="text-xs font-medium text-gray-600/75 group-hover:text-gray-600 
-                          transition-colors duration-300">Adapts to your progress</p>
-                      </div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-2xl font-semibold text-gray-100">324</span>
+                    <span className="text-xs text-gray-400">kcal</span>
+                  </div>
+                  <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
+                    <div className="h-full w-[70%] bg-gradient-to-r from-orange-400 to-orange-500 rounded-full" />
+                  </div>
+                  <p className="text-xs text-gray-400">Daily Goal: 500 kcal</p>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            {/* AI Form Widget - Bottom Left */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute -left-12 bottom-52 z-20"
+            >
+              <motion.div 
+                animate={{ y: [-8, 8, -8] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+                className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-2xl p-5 
+                  shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-700/30 
+                  hover:shadow-lg hover:border-gray-600/30 hover:-translate-y-0.5 transition-all duration-300 w-[170px]"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-gray-400 text-[13px] font-medium">Form Analysis</p>
+                    <div className="flex items-center gap-1 text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-lg">
+                      <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[11px] font-medium">Perfect</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-[52px] h-[52px]">
+                      <CircularProgressbar
+                        value={98}
+                        text={`98`}
+                        strokeWidth={6}
+                        styles={buildStyles({
+                          textSize: '22px',
+                          pathColor: '#34D399',
+                          textColor: '#F3F4F6',
+                          trailColor: '#374151',
+                        })}
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-gray-200 text-sm font-medium">Form Score</p>
+                      <p className="text-xs text-gray-400">Last Set</p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            {/* Analytics Card */}
-            <div className="absolute -left-8 bottom-48 hidden lg:block">
-              <div className="animate-float-card-3">
-                <div className="group relative transition-all duration-300 hover:scale-105">
-                  <div className="absolute -inset-1.5 bg-gradient-to-r from-amber-600/20 via-orange-600/20 to-red-600/20 
-                    rounded-lg blur-lg opacity-50 group-hover:opacity-75 group-hover:blur-xl transition-all duration-500">
-                  </div>
-                  <div className="relative bg-white/50 hover:bg-white/80 backdrop-blur-xl rounded-lg p-3.5 shadow-lg 
-                    border border-white/20 transition-all duration-300">
-                    <div className="flex items-center gap-3.5">
-                      <div className="relative h-9 w-9 rounded-lg bg-gradient-to-br from-purple-500/10 to-pink-500/10 
-                        flex items-center justify-center shadow-inner transform group-hover:scale-110 
-                        group-hover:rotate-3 transition-all duration-300 overflow-hidden">
-                        <AnimatedEmoji emoji="📈" animationType="spin" className="text-base" />
-                      </div>
-                      <div className="transform group-hover:translate-x-1 transition-all duration-300">
-                        <div className="flex items-center gap-1.5">
-                          <p className="text-sm font-semibold text-gray-900/80 group-hover:text-gray-900 
-                            transition-colors duration-300">Live Insights</p>
-                          <div className="h-4 w-4 rounded-full bg-purple-100 flex items-center justify-center
-                            opacity-0 group-hover:opacity-100 transition-all duration-300 scale-50 group-hover:scale-100">
-                            <span className="text-[10px]">⚡</span>
-                          </div>
-                        </div>
-                        <p className="text-xs font-medium text-gray-600/75 group-hover:text-gray-600 
-                          transition-colors duration-300">Real-time analytics</p>
-                      </div>
+            {/* Heart Rate Widget - Bottom Right */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute -right-40 bottom-32 z-10"
+            >
+              <motion.div 
+                animate={{ y: [-12, 12, -12] }}
+                transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+                className="bg-gradient-to-br from-gray-900/95 to-gray-800/95 backdrop-blur-xl rounded-2xl p-5 
+                  shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-700/30 
+                  hover:shadow-lg hover:border-gray-600/30 hover:-translate-y-0.5 transition-all duration-300 w-[170px]"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <p className="text-gray-400 text-[13px] font-medium">Heart Rate</p>
+                    <div className="flex items-center gap-1">
+                      <span className="text-rose-400">❤️</span>
+                      <div className="h-1.5 w-1.5 rounded-full bg-rose-400 animate-pulse" />
                     </div>
                   </div>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-2xl font-semibold text-gray-100">147</span>
+                    <span className="text-xs text-gray-400">bpm</span>
+                  </div>
+                  <div className="flex gap-1">
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <motion.div 
+                        key={i}
+                        animate={{ 
+                          height: [`${Math.random() * 12 + 8}px`, `${Math.random() * 12 + 8}px`]
+                        }}
+                        transition={{
+                          duration: 0.8,
+                          repeat: Infinity,
+                          repeatType: "reverse",
+                          delay: i * 0.1
+                        }}
+                        className="w-1 rounded-full bg-gradient-to-t from-rose-500 to-rose-400"
+                        style={{
+                          opacity: Math.random() * 0.7 + 0.3,
+                        }}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-400">Zone: Cardio</p>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
+
+            {/* iPhone */}
+            <motion.div 
+              className="h-full flex items-center justify-center relative z-0"
+              animate={{ y: [-10, 10, -10] }}
+              transition={{
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+              }}
+            >
+              <Iphone15Pro 
+                src="/image/5.mp4"
+                width={380}
+                height={770}
+                theme="dark"
+              />
+            </motion.div>
           </div>
         </div>
       </div>
