@@ -20,24 +20,26 @@ export default function Newsletter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="border border-gray-200/80 rounded-2xl p-10 sm:p-12 
-            bg-white/80 backdrop-blur-sm shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
+          className="border border-white/[0.075] rounded-2xl p-10 sm:p-12 
+            bg-[#1A1A1C]/50 backdrop-blur-sm shadow-[0_8px_32px_rgb(0,0,0,0.4)]"
         >
           <div className="grid lg:grid-cols-[1fr,1fr] gap-16 items-start">
             {/* Left side - Newsletter Form */}
             <div>
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full 
-                bg-gray-100 text-gray-600 text-sm font-medium mb-6">
+                bg-[#1A1A1C] border border-white/[0.075] text-gray-400 text-sm font-medium mb-6">
                 <NewspaperIcon className="h-4 w-4" />
                 <span>Newsletter</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2">
+              <h3 className="text-2xl sm:text-3xl font-semibold text-gray-200 mb-2">
                 Stay Updated with <br />
-                SolveForge
+                <span className="bg-gradient-to-b from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+                  SolveForge
+                </span>
               </h3>
-              <p className="text-gray-600 text-sm mb-6">
+              <p className="text-gray-400 text-sm mb-6">
                 Get the latest fitness tips, AI insights, and exclusive offers
                 delivered straight to your inbox.
               </p>
@@ -46,8 +48,8 @@ export default function Newsletter() {
                   <Input
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full bg-white border-gray-200 focus:border-gray-300 
-                      focus:ring-0 h-12 pl-4 pr-10"
+                    className="w-full bg-[#1A1A1C]/60 border-white/[0.075] focus:border-white/[0.15] 
+                      focus:ring-0 h-12 pl-4 pr-10 text-gray-200 placeholder:text-gray-500"
                   />
                   <div className="absolute right-3 top-1/2 -translate-y-1/2">
                     <ArrowRight className="h-5 w-5 text-gray-400" />
@@ -55,7 +57,9 @@ export default function Newsletter() {
                 </div>
                 <Button 
                   type="submit" 
-                  className="w-full bg-gray-900 text-white h-12"
+                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white h-12
+                    hover:from-blue-600 hover:to-cyan-600 transition-all duration-300
+                    shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35"
                 >
                   Subscribe Now
                 </Button>
@@ -64,12 +68,12 @@ export default function Newsletter() {
               {/* Features */}
               <div className="flex items-center gap-6 mt-4">
                 <div className="flex items-center gap-2">
-                  <Sparkle className="h-4 w-4 text-gray-500" />
-                  <span className="text-xs text-gray-500">Weekly fitness insights</span>
+                  <Sparkle className="h-4 w-4 text-blue-400" />
+                  <span className="text-xs text-gray-400">Weekly fitness insights</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Lock className="h-4 w-4 text-gray-500" />
-                  <span className="text-xs text-gray-500">No spam, unsubscribe anytime</span>
+                  <Lock className="h-4 w-4 text-blue-400" />
+                  <span className="text-xs text-gray-400">No spam, unsubscribe anytime</span>
                 </div>
               </div>
             </div>
@@ -77,24 +81,24 @@ export default function Newsletter() {
             {/* Right side - Loading Cards */}
             <div className="relative mt-12">
               {/* Background shadow for all cards */}
-              <div className="absolute -inset-4 rounded-2xl bg-gray-900/15 blur-3xl -z-10" />
+              <div className="absolute -inset-4 rounded-2xl bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 blur-3xl -z-10" />
               
               <div className="space-y-3">
                 {[
-                  { bgColor: 'bg-blue-50/30' },
-                  { bgColor: 'bg-purple-50/30' },
-                  { bgColor: 'bg-rose-50/30' }
+                  { bgColor: 'bg-[#1A1A1C]/60' },
+                  { bgColor: 'bg-[#1A1A1C]/40' },
+                  { bgColor: 'bg-[#1A1A1C]/20' }
                 ].map((card, index) => (
                   <motion.div 
                     key={index} 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`${card.bgColor} rounded-xl p-4`}
+                    className={`${card.bgColor} rounded-xl p-4 border border-white/[0.075]`}
                   >
                     <div className="space-y-2.5">
-                      <div className="h-2.5 bg-gray-300/80 rounded-full w-[88%] animate-pulse-slow" />
-                      <div className="h-2.5 bg-gray-100/80 rounded-full w-[75%] animate-pulse-slow delay-75" />
+                      <div className="h-2.5 bg-white/10 rounded-full w-[88%] animate-pulse-slow" />
+                      <div className="h-2.5 bg-white/5 rounded-full w-[75%] animate-pulse-slow delay-75" />
                     </div>
                   </motion.div>
                 ))}

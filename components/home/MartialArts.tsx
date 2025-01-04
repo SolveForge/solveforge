@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-import { ArrowRight, Sword, Shield, Target, Zap, Medal, Users, Clock, Trophy } from 'lucide-react'
+import { ArrowRight, Sword, Shield, Target, Zap, Medal, Users, Clock, Trophy, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 
 export default function MartialArts() {
@@ -12,28 +12,32 @@ export default function MartialArts() {
       description: "Master the art of striking",
       icon: Sword,
       students: "2,000+",
-      level: "Beginner to Black Belt"
+      level: "Beginner to Black Belt",
+      gradient: "from-blue-500/90 to-cyan-500/90"
     },
     {
       name: "Brazilian Jiu-Jitsu",
       description: "Ground fighting excellence",
       icon: Shield,
       students: "1,500+",
-      level: "All levels welcome"
+      level: "All levels welcome",
+      gradient: "from-purple-500/90 to-pink-500/90"
     },
     {
       name: "Muay Thai",
       description: "The art of 8 limbs",
       icon: Target,
       students: "1,000+",
-      level: "Beginner friendly"
+      level: "Beginner friendly",
+      gradient: "from-orange-500/90 to-red-500/90"
     },
     {
       name: "Judo",
       description: "Master throws and grappling",
       icon: Zap,
       students: "800+",
-      level: "Progressive learning"
+      level: "Progressive learning",
+      gradient: "from-emerald-500/90 to-green-500/90"
     }
   ]
 
@@ -61,103 +65,133 @@ export default function MartialArts() {
   ]
 
   return (
-    <section className="relative py-24 bg-white">
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
-      
+    <section className="relative py-32 overflow-hidden">
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-4xl mx-auto mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center px-3 py-1.5 rounded-full 
+              bg-[#1A1A1C] border border-white/[0.075] shadow-[0_8px_32px_rgb(0,0,0,0.4)]"
+          >
+            <div className="flex items-center gap-2">
+              <span className="animate-spin-slow">🥋</span>
+              <span className="text-xs font-medium text-gray-400">
+                Martial Arts Training
+              </span>
+            </div>
+          </motion.div>
+
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight lg:leading-tight
+              tracking-tight mb-8 mt-8"
           >
-            Discover Your Inner Warrior
+            <span className="text-gray-100">Discover Your</span>{" "}
+            <span className="bg-gradient-to-b from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">
+              Inner Warrior
+            </span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-gray-600 text-lg"
+            className="text-gray-400 text-lg sm:text-xl leading-relaxed"
           >
             Choose from multiple martial arts disciplines and embark on a journey of self-discovery,
             discipline, and mastery.
           </motion.p>
         </div>
 
-        {/* Disciplines Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {disciplines.map((discipline, index) => {
-            const Icon = discipline.icon
-            return (
-              <motion.div
-                key={discipline.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-red-500/10 to-orange-500/10 
-                  rounded-2xl blur-xl transition-all duration-300 group-hover:blur-2xl" />
-                <div className="relative bg-white border border-gray-200/50 p-6 rounded-2xl
-                  backdrop-blur-sm hover:border-red-500/30 transition-all duration-300
-                  shadow-sm hover:shadow-md">
-                  <Icon className="h-8 w-8 text-red-500 mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{discipline.name}</h3>
-                  <p className="text-gray-600 mb-4">{discipline.description}</p>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-red-500">{discipline.students} students</span>
-                    <span className="text-gray-500">{discipline.level}</span>
+        {/* Grid layout for disciplines and CTA */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-24">
+          {/* Left side - Disciplines Grid */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            {disciplines.map((discipline, index) => {
+              const Icon = discipline.icon
+              return (
+                <motion.div
+                  key={discipline.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="relative bg-[#1A1A1C]/50 backdrop-blur-sm rounded-2xl p-6 
+                    border border-white/[0.075] hover:border-white/[0.15] transition-all duration-300">
+                    <div className={`inline-flex p-3 rounded-xl bg-gradient-to-br ${discipline.gradient} 
+                      mb-4 text-white shadow-lg transform transition-all duration-300 
+                      group-hover:scale-110 group-hover:rotate-3`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-gray-200 mb-2">{discipline.name}</h3>
+                    <p className="text-gray-400 mb-4">{discipline.description}</p>
+                    <div className="flex items-center justify-between text-sm">
+                      <span className="text-gray-300">{discipline.students} students</span>
+                      <span className="text-gray-500">{discipline.level}</span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
+                </motion.div>
+              )
+            })}
+          </div>
 
-        {/* Features Section */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-            return (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full 
-                  bg-red-500/10 mb-4">
-                  <Icon className="h-6 w-6 text-red-500" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
-              </motion.div>
-            )
-          })}
-        </div>
+          {/* Right side - CTA Content */}
+          <div className="relative lg:text-left">
+            <motion.div 
+              whileHover={{ y: -5 }}
+              transition={{ duration: 0.2 }}
+              className="relative bg-[#1A1A1C]/60 backdrop-blur-sm rounded-2xl p-8 
+                border border-white/[0.075] hover:border-white/[0.15] transition-all duration-300"
+            >
+              <div className="space-y-6">
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-2 text-sm text-gray-400 
+                    bg-[#1A1A1C]/80 p-2 rounded-lg inline-block transition-colors"
+                >
+                  <Sparkles className="h-4 w-4 text-blue-400" />
+                  <span>Limited time offer</span>
+                </motion.div>
+                
+                <h3 className="text-2xl font-semibold text-gray-200">
+                  Start your martial arts journey today
+                </h3>
 
-        {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center"
-        >
-          <Button 
-            size="lg" 
-            className="bg-gradient-to-r from-red-500 to-orange-500 text-white px-8 py-6
-              rounded-full hover:from-red-600 hover:to-orange-600 transition-all duration-300
-              text-lg font-medium shadow-lg shadow-red-500/25 hover:shadow-xl 
-              hover:shadow-red-500/35"
-          >
-            Start Your Journey Today
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </motion.div>
+                <div className="grid grid-cols-2 gap-4">
+                  {features.map((feature, index) => {
+                    const Icon = feature.icon
+                    return (
+                      <div key={feature.title} className="flex items-start gap-3">
+                        <div className="p-2 rounded-lg bg-[#1A1A1C] text-blue-400">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h4 className="text-sm font-semibold text-gray-300">{feature.title}</h4>
+                          <p className="text-xs text-gray-500">{feature.description}</p>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+
+                <Button 
+                  size="lg" 
+                  className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white
+                    hover:from-blue-600 hover:to-cyan-600 transition-all duration-300
+                    shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35"
+                >
+                  Start Your Journey Today
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   )
