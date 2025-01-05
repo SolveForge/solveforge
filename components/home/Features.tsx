@@ -1,7 +1,14 @@
 'use client'
 
 import { Card, CardContent } from "@/components/ui/card"
-import { Brain, Target, Clock, Dumbbell, Sparkles as SparklesIcon, ArrowRight } from 'lucide-react'
+import { 
+  Brain, 
+  Target, 
+  Clock, 
+  Dumbbell, 
+  Sparkles, 
+  ArrowRight 
+} from 'lucide-react'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { motion } from "framer-motion"
 import AnimatedShinyText from "@/components/ui/animated-shiny-text"
@@ -27,7 +34,7 @@ export default function Features() {
       softGradient: "from-purple-50 via-pink-50/50 to-transparent"
     },
     {
-      icon: <SparklesIcon className="h-8 w-8" />,
+      icon: <Sparkles className="h-8 w-8" />,
       title: "Science-Based Training",
       description: "Access workouts built on proven sports science principles. Get detailed form guides and technique tips for each exercise, optimized for your goals while minimizing injury risk.",
       color: "emerald",

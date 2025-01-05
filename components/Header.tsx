@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
+import { Logo } from '@/components/icons/Logo';
 
 const navigation = [
   { name: 'Features', href: '#features' },
@@ -37,14 +38,12 @@ export default function Header() {
             transition={{ duration: 0.5 }}
             className="flex-shrink-0"
           >
-            <Link href="/" className="flex items-center gap-2">
-              <div className="relative h-8 w-8">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 blur-sm opacity-80" />
-                <div className="relative h-full w-full rounded-full bg-[#0A0A0C] flex items-center justify-center">
-                  <span className="text-lg">⚡</span>
-                </div>
+            <Link href="/" className="flex items-center gap-3">
+              <div className="relative h-9 w-9">
+                <Logo withBackground className="w-full h-full" />
               </div>
-              <span className="text-lg font-semibold bg-gradient-to-r from-gray-100 to-gray-300 bg-clip-text text-transparent">
+              <span className="text-lg font-semibold bg-gradient-to-r from-gray-100 to-gray-300 
+                bg-clip-text text-transparent">
                 SolveForge
               </span>
             </Link>

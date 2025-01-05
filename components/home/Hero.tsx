@@ -9,8 +9,8 @@ import { motion } from 'framer-motion';
 import { useScroll, useTransform } from 'framer-motion'
 import Iphone15Pro from "@/components/ui/iphone-15-pro"
 import { Activity, Calendar, Dumbbell, LineChart } from 'lucide-react'
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
+import 'react-circular-progressbar/dist/styles.css'
 
 interface Widget {
   title: string;
