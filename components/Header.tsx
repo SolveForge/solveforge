@@ -8,10 +8,11 @@ import { Menu, X } from 'lucide-react';
 import { Logo } from '@/components/icons/Logo';
 
 const navigation = [
+  { name: 'Home', href: '/' },
   { name: 'Features', href: '#features' },
   { name: 'How it Works', href: '#how-it-works' },
   { name: 'Science', href: '#science' },
-  { name: 'Pricing', href: '#pricing' }
+  { name: 'Pricing', href: '/pricing' }
 ];
 
 export default function Header() {

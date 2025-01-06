@@ -324,13 +324,19 @@ export default function Hero() {
 
           {/* Right Column - iPhone and Widgets */}
           <div className="relative h-[800px] w-full lg:w-[500px] ml-auto">
-            {widgets.map((widget: Widget, index: number) => (
+            {widgets.map((widget, index) => (
               <motion.div 
                 key={index}
                 initial={widget.initial}
                 animate={widget.animate}
                 transition={widget.transition}
-                className={widget.className}
+                className={`absolute ${
+                  // Adjust positions to stay in view
+                  widget.title === "Workout Time" ? "left-2 top-24 md:-left-24 md:top-24" :
+                  widget.title === "Calories Burned" ? "right-2 top-40 md:-right-6 md:top-40" :
+                  widget.title === "Heart Rate" ? "right-2 bottom-36 md:-right-28 md:bottom-36" :
+                  "left-2 bottom-28 md:-left-20 md:bottom-28" // Steps Today
+                } z-10`}
               >
                 <motion.div 
                   animate={widget.floatAnimation}
@@ -341,45 +347,74 @@ export default function Hero() {
                     rounded-2xl opacity-0 group-hover:opacity-100 blur-xl transition-all duration-700
                     group-hover:duration-500" />
                   
-                  <div className="relative p-4 rounded-2xl transition-all duration-500
+                  <div className="relative p-2 sm:p-4 rounded-2xl transition-all duration-500
                     border border-white/[0.075] 
                     group-hover:border-white/[0.2]
                     group-hover:shadow-[0_8px_32px_rgb(0,0,0,0.5)]
                     group-hover:translate-y-[-2px]
                     bg-[#1A1A1C]
-                    w-[190px]">
+                    w-[120px] sm:w-[160px] md:w-[190px]">
                     
-                    <div className="flex items-center justify-between mb-3">
-                      <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-between mb-1 sm:mb-2">
+                      <div className="flex items-center gap-0.5 sm:gap-1">
                         <div className="relative">
                           <div className="absolute inset-0 bg-white/40 rounded-full 
                             animate-ping [animation-duration:3s]" />
-                          <div className="relative h-1 w-1 rounded-full bg-white/80" />
+                          <div className="relative h-0.5 w-0.5 sm:h-1 sm:w-1 rounded-full bg-white/80" />
                         </div>
-                        <p className="text-[11px] font-medium text-gray-300/90 tracking-wide">
+                        <p className="text-[8px] sm:text-[10px] md:text-[11px] font-medium text-gray-300/90 tracking-wide truncate">
                           {widget.title}
                         </p>
                       </div>
-                      {widget.icon}
+                      <div className="scale-50 sm:scale-75 md:scale-100 flex-shrink-0">
+                        {widget.icon}
+                      </div>
                     </div>
 
-                    <div className="space-y-3 relative">
-                      <div className="flex items-baseline gap-1.5">
-                        <span className="text-2xl font-semibold text-gray-100 tracking-tight">
+                    <div className="space-y-1 sm:space-y-2">
+                      <div className="flex items-baseline gap-0.5 sm:gap-1">
+                        <span className="text-sm sm:text-xl md:text-2xl font-semibold text-gray-100 tracking-tight">
                           {widget.value}
                         </span>
-                        <span className="text-[10px] text-gray-400 font-medium">
+                        <span className="text-[8px] sm:text-[10px] text-gray-400 font-medium">
                           {widget.unit}
                         </span>
                       </div>
 
-                      <motion.div 
-                        initial={false}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {widget.content}
-                      </motion.div>
+                      <div className="scale-75 sm:scale-90 md:scale-100 origin-left">
+                        {widget.title === "Heart Rate" ? (
+                          <div className="space-y-2">
+                            <div className="flex gap-1 h-6 sm:h-8 items-end px-0.5">
+                              {Array.from({ length: 7 }).map((_, i) => (
+                                <motion.div 
+                                  key={i}
+                                  animate={{ 
+                                    height: [`${Math.random() * 15 + 8}px`, `${Math.random() * 15 + 8}px`]
+                                  }}
+                                  transition={{
+                                    duration: 0.8,
+                                    repeat: Infinity,
+                                    repeatType: "reverse",
+                                    delay: i * 0.1
+                                  }}
+                                  className="w-0.5 sm:w-1.5 rounded-full bg-gradient-to-t from-rose-500 via-rose-400 to-pink-400"
+                                  style={{
+                                    opacity: Math.random() * 0.7 + 0.3,
+                                  }}
+                                />
+                              ))}
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <div className="px-1.5 py-0.5 rounded-full bg-rose-500/10 border border-rose-500/20">
+                                <p className="text-[8px] sm:text-[10px] text-rose-400 font-medium whitespace-nowrap">Cardio Zone</p>
+                              </div>
+                              <span className="text-[8px] sm:text-[10px] text-gray-500">70-85%</span>
+                            </div>
+                          </div>
+                        ) : (
+                          widget.content
+                        )}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -407,4 +442,3 @@ export default function Hero() {
     </section>
   );
 }
-
