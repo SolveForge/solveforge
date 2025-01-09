@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+'use client';
+
 import localFont from "next/font/local";
 import "./globals.css";
 import ScrollProvider from '@/components/ScrollProvider'
+import LoadingScreen from '@/components/LoadingScreen';
+import { UserProvider } from '@/contexts/UserContext';
+import { Toaster } from 'sonner';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,16 +18,6 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: "SolveForge - AI-Powered Fitness",
-  description: "Transform your fitness journey with AI-powered personalized workouts and nutrition guidance.",
-  icons: {
-    icon: [{ url: "/logo.svg", type: "image/svg+xml", sizes: "32x32" }],
-    shortcut: ["/logo.svg"],
-    apple: [{ url: "/logo.svg", sizes: "32x32" }],
-  },
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -31,11 +25,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <LoadingScreen />
         <ScrollProvider>
-          {children}
+          <UserProvider>
+            {children}
+          </UserProvider>
         </ScrollProvider>
+        <Toaster position="top-center" richColors />
       </body>
     </html>
-  )
+  );
 }

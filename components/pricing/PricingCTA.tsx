@@ -87,7 +87,8 @@ export default function PricingCTA() {
                   </Button>
                   <Button 
                     variant="outline"
-                    className="border-white/[0.075] hover:border-white/[0.15] text-gray-200"
+                    className="border-white/[0.075] hover:border-white/[0.15] bg-white/[0.05] 
+                      text-gray-300 hover:text-white hover:bg-white/[0.1] transition-all duration-200"
                   >
                     Talk to Sales
                   </Button>

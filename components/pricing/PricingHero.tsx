@@ -3,8 +3,11 @@
 import { motion } from 'framer-motion';
 import { AnimatedEmoji } from "@/components/ui/animated-emoji"
 import AnimatedShinyText from "@/components/ui/animated-shiny-text"
+import { usePageLoading } from '@/components/LoadingScreen';
 
 export default function PricingHero() {
+  const { shouldStartPageAnimation } = usePageLoading();
+
   return (
     <section className="relative pt-32 pb-8 lg:pt-36 lg:pb-12 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,7 +15,7 @@ export default function PricingHero() {
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: shouldStartPageAnimation ? 1 : 0, y: shouldStartPageAnimation ? 0 : 20 }}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center px-3 py-1.5 rounded-full 
               bg-[#1A1A1C] border border-white/[0.075] shadow-[0_8px_32px_rgb(0,0,0,0.4)]"
@@ -31,7 +34,7 @@ export default function PricingHero() {
           {/* Main heading */}
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: shouldStartPageAnimation ? 1 : 0, y: shouldStartPageAnimation ? 0 : 20 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mt-8 text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight"
           >
@@ -44,7 +47,7 @@ export default function PricingHero() {
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: shouldStartPageAnimation ? 1 : 0, y: shouldStartPageAnimation ? 0 : 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="mt-6 text-lg text-gray-400 leading-relaxed"
           >
